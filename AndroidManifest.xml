@@ -25,10 +25,10 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <meta-data
-            android:name="channel"
+            android:name="SAILER_CHANNEL"
             android:value="A820" />
         <meta-data
-            android:name="product"
+            android:name="SAILER_PRODUCT"
             android:value="A632" />
 
         <activity
