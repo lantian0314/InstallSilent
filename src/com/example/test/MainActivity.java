@@ -31,18 +31,22 @@ public class MainActivity extends Activity {
 		button_install = (Button) findViewById(R.id.button_install);
 		install_message = (TextView) findViewById(R.id.install_message);
 		result = (TextView) findViewById(R.id.result);
+		
+		//判断是否有静默安装的权限
 		boolean InstallResult = isHasInsPermission(getApplicationContext());
 		if (InstallResult) {
 			install_message.setText("有安装的权限");
 		} else {
 			install_message.setText("没有安装的权限");
 		}
-
+		
+		//判断安装的应用是否已经存在
 		boolean isInstall=isInstalled(getApplicationContext(), "com.flash.browser.pro");
 		if (isInstall) {
 			result.setText("安装应用已存在");
 		}
 		
+		//按钮的点击事件
 		button_install.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -61,7 +65,12 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
-
+	/**
+	 * 判断应用是否已经安装
+	 * @param context 上下文
+	 * @param packageName 包名
+	 * @return
+	 */
 	private boolean isInstalled(Context context, String packageName) {
 		try {
 			context.getPackageManager().getPackageInfo(packageName, 0);
@@ -71,9 +80,18 @@ public class MainActivity extends Activity {
 		return true;
 	}
 	
+	/**
+	 * 安装成功之后的提示
+	 */
 	public static void installSuccess(){
 		result.setText("安装成功！");
 	}
+	/**
+	 * 静默安装的反射方法
+	 * @param context 上下文
+	 * @param filePath 安装App的文件路径
+	 * @return
+	 */
 	private  boolean installSilently(Context context, String filePath) {
 
 		try {
@@ -103,6 +121,7 @@ public class MainActivity extends Activity {
 		return false;
 	}
 
+	
 	private static Class<?>[] getParamTypes(Class<?> cls, String mName) {
 		Class<?> cs[] = null;
 
@@ -121,6 +140,11 @@ public class MainActivity extends Activity {
 		return cs;
 	}
 
+	/**
+	 * 是否有静默安装的权限
+	 * @param context
+	 * @return
+	 */
 	private boolean isHasInsPermission(Context context) {
 		boolean isHas = false;
 		try {
