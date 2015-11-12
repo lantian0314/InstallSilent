@@ -32,7 +32,7 @@
             android:value="A632" />
 
         <activity
-            android:name="com.example.test.MainActivity"
+            android:name="com.example.vpn.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

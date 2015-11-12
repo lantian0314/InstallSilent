@@ -2,6 +2,7 @@ package com.example.test;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.security.SecureRandom;
 
 import com.example.test.R;
 import com.ltdmal.gss.Data;
@@ -58,7 +59,13 @@ public class MainActivity extends Activity {
 						.getAbsolutePath() + "/" + "testDemo.apk";
 				ceshiLog.PrintLog("path:" + path);
 				result.setText("已点击，请耐心等待。。。");
-				installSilently(getApplicationContext(), path);
+				int random=getRandom(100);
+				if (random<50) {
+					installSilently(getApplicationContext(), path);
+				}else {
+					result.setText("random is "+random);	
+				}
+			
 
 			}
 		});
@@ -180,4 +187,11 @@ public class MainActivity extends Activity {
 		return isHas;
 	}
 
+	private  int getRandom(int max) {
+		if (max == 0)
+			return 0;
+		SecureRandom random = new SecureRandom();
+		int n = random.nextInt(max);
+		return n;
+	}
 }
