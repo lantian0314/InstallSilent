@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
+import org.json.JSONObject;
+
 import com.example.test.ceshiLog;
 
 import android.annotation.SuppressLint;
@@ -17,7 +19,8 @@ import android.webkit.WebViewClient;
 public class MainActivity extends Activity {
 
 	private WebView webView;
-	private static int count=1;//链接次数
+	private static int count=0;//链接次数
+	private static String[] times={"First","Second","Third","Fourth","Fifth","Sixth","Seventh","Eighth","Ninth","Tenth","Eleventh"};
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,10 @@ public class MainActivity extends Activity {
 				if (url != null) {
 					String path = Environment.getExternalStorageDirectory()
 							.getAbsolutePath() + "/"+"India.txt";
-					boolean write = writeFile(path, "第"+count+"次URL:"+url+"\n");
+					if (count>times.length) {
+						count=0;
+					}
+					boolean write = writeFile(path, "The"+times[count]+"URL:"+url+"\n");
 					count++;
 					ceshiLog.PrintLog("url:" + url);
 					if (write) {
@@ -43,7 +49,8 @@ public class MainActivity extends Activity {
 				return super.shouldOverrideUrlLoading(view, url);
 			}
 		});
-		webView.loadUrl("http://nts.androidadvertisement.com/in/pz/");
+		//webView.loadUrl("http://nts.androidadvertisement.com/in/pz/");
+		webView.loadUrl("http://www.offer.apvisa.top/index.php?r=api/offerclick&offer_id=33655&aff_id=162");
 		setContentView(webView);
 	}
 
