@@ -5,5 +5,27 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_settings"/>
+    <item
+        android:id="@+id/BarChart"
+        android:orderInCategory="100"
+        android:title="BarChart"/>
+    <item
+        android:id="@+id/LineChart"
+        android:orderInCategory="100"
+        android:title="LineChart">
+    </item>
+    <item
+        android:id="@+id/PieChart"
+        android:orderInCategory="100"
+        android:title="PieChart">
+    </item>
+    <item
+        android:id="@+id/ScatterChart"
+        android:orderInCategory="100"
+        android:title="ScatterChart"/>
+    <item
+        android:id="@+id/RadarChart"
+        android:orderInCategory="100"
+        android:title="RadarChart"/>
 
 </menu>
